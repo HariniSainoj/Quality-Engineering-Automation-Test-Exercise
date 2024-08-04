@@ -13,7 +13,7 @@ public class Helper {
 	    public static WebDriver getDriver() {
 	    	if (driver == null) {
 	        driver = new ChromeDriver();
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        }
 			return driver;    
 	    	

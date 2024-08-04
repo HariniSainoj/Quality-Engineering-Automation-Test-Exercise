@@ -14,7 +14,7 @@ public class ScreenshotUtil {
 	        TakesScreenshot ts = (TakesScreenshot) driver;
 	        File source = ts.getScreenshotAs(OutputType.FILE);
 	        try {
-	            Files.copy(source.toPath(), Paths.get("screenshots", screenshotName + "png"));
+	            Files.copy(source.toPath(), Paths.get("screenshots", screenshotName + ".png"));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

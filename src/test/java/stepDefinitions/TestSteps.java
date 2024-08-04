@@ -1,20 +1,17 @@
 package stepDefinitions;
 
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.Scenario;
 import pageObjects.AmazonPage;
-import pageObjects.ListFilters;
+import pageObjects.ListFiltersPage;
 import utilities.Helper;
 import utilities.LoggerUtil;
 import utilities.ScreenshotUtil;
@@ -23,8 +20,9 @@ import utilities.ScreenshotUtil;
 public class TestSteps {
 	
 	private AmazonPage AmazonPage;
+	private ListFiltersPage ListFiltersPage;
 	private WebDriver driver;
-	private static final java.util.logging.Logger logger = LoggerUtil.getLogger(AmazonPage.class);
+	private static final java.util.logging.Logger logger = LoggerUtil.getLogger(TestSteps.class);
 	
 	
 	
@@ -32,6 +30,7 @@ public class TestSteps {
 	public void setUp() {
 		driver = Helper.getDriver();
 		AmazonPage = new AmazonPage(driver);
+		ListFiltersPage = new ListFiltersPage(driver);
 	}
 	
 	@Given("I launch the Amazon application")
@@ -55,14 +54,14 @@ public class TestSteps {
 	
 	@Then("I see the list of filter specifications")
 	public void i_see_the_list_of_filter_specifications() {
-		List<WebElement> phones = ListFilters.listFilterSpecifications();
+		ListFiltersPage.verifyFilterSpecifications();
         logger.info("Verification completed. Samsung phones are present.");
 	}
 	
     @AfterStep
     public void takeScreenshotOnFailure(Scenario scenario) {
         if (scenario.isFailed()) {
-         ScreenshotUtil.captureScreenshot(driver, scenario.getName().replaceAll(" ", "_"));
+         ScreenshotUtil.captureScreenshot(driver, scenario.getId().replaceAll(" ", "_"));
         }
     }
     @After
