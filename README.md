@@ -1,1 +1,1 @@
-# Quality-Engineering-Automation-Test-Exercise-
+# Quality-Engineering-Automation-Test-Exercise
