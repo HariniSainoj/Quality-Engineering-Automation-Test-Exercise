@@ -34,7 +34,7 @@ public class TestSteps {
 	}
 	
 	@Given("I launch the Amazon application")
-	public void I_launch_the_application() throws Throwable {
+	public void I_launch_the_Amazon_application() throws Throwable {
 	    Helper.openPage("https://www.amazon.co.uk/");
 	    logger.info("Amazon Website is opened and maximized");
 	}
